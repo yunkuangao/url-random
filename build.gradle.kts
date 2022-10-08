@@ -6,6 +6,7 @@ plugins {
     application
     kotlin("jvm") version "1.7.20"
     id("io.ktor.plugin") version "2.1.2"
+    kotlin("plugin.serialization") version "1.7.20"
 }
 
 group = "me.yunkuangao.random"
@@ -25,12 +26,16 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:$logback_version")
     implementation("io.ktor:ktor-server-core:$ktor_version")
     implementation("io.ktor:ktor-server-core-jvm:$ktor_version")
+    implementation("io.ktor:ktor-server-cors:$ktor_version")
+    implementation("io.ktor:ktor-server-content-negotiation:$ktor_version")
     implementation("io.ktor:ktor-server-netty-jvm:$ktor_version")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
     implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.3")
 
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 }
 
-
-// todo 添加npm打包
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}

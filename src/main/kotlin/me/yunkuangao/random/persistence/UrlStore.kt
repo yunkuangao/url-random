@@ -1,16 +1,10 @@
 package me.yunkuangao.random.persistence
 
 import me.yunkuangao.random.utils.*
-import java.util.*
-
-var urlMap: MutableMap<String, String> = readFile().associateBy { UUID.fromString(it).toString() }.toMutableMap()
 
 var categoryUrlMap: MutableMap<String, MutableList<String>> = readFile(CATEGORY_FILE)
     .associateWith { readFile("$it.txt").toMutableList() }
     .toMutableMap()
-    .also {
-        it["default"] = readFile().toMutableList()
-    }
 
 fun saveCategory(category: String) {
     if (!categoryUrlMap.containsKey(category)) {
@@ -21,22 +15,27 @@ fun saveCategory(category: String) {
 
 fun deleteCategory(category: String) {
     if (!categoryUrlMap.containsKey(category)) {
-        categoryUrlMap[category] = mutableListOf()
+        categoryUrlMap.remove(category)
         removeLine(category, CATEGORY_FILE)
     }
 }
 
-fun saveUrl(url: String, category: String = "") {
-    //  todo 添加url验证
+fun saveUrl(url: String, category: String) {
 
-
-    //添加到默认
-    categoryUrlMap["default"]?.add(url)
-    attachFile(url, URL_FILE)
-
-    //添加到类型文件
-    if (category.isNotEmpty()) {
-        categoryUrlMap[category]?.add(url)
+    //添加到分类文件
+    if (!categoryUrlMap.containsKey(category)) {
+        saveCategory(category)
+    }
+    // 相同的不保存
+    if (!categoryUrlMap[category]!!.contains(url)) {
+        categoryUrlMap[category]!!.add(url)
         attachFile(url, "$category.txt")
+    }
+}
+
+fun deleteUrl(url: String, category: String) {
+    if (categoryUrlMap.containsKey(category) && categoryUrlMap[category]!!.contains(url)) {
+        categoryUrlMap[category]!!.remove(url)
+        removeLine(url, "$category.txt")
     }
 }
