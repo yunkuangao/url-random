@@ -88,7 +88,12 @@ fun Application.configureRouting() {
             if (call.parameters["category"]?.isNotEmpty() == true) {
                 val category = call.parameters["category"]
                 if (categoryUrlMap.containsKey(category)) {
-                    categoryUrlMap[category]?.let { call.respondRedirect(it.random()) }
+                    categoryUrlMap[category]?.let {
+                        if (it.size > 0) call.respondRedirect(it.random()) else call.respondText(
+                            text = "500: this category is empty",
+                            status = HttpStatusCode.InternalServerError
+                        )
+                    }
                 } else {
                     call.respondText(text = "404: category not found", status = HttpStatusCode.NotFound)
                 }
