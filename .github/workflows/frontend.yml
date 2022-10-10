@@ -6,8 +6,6 @@ name: frontend CI
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
 
 jobs:
   build:
@@ -24,6 +22,7 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
+        working-directory: ./frontend
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - name: npm build and test 
