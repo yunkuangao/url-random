@@ -4,6 +4,7 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-) 
 [![Star on GitHub](https://img.shields.io/github/stars/yunkuangao/url-random.svg?style=social)](https://github.com/yunkuangao/url-random/stargazers)
 ![frontend build](https://github.com/yunkuangao/url-random/actions/workflows/frontend.yml/badge.svg)
+![backend build](https://github.com/yunkuangao/url-random/actions/workflows/backend.yml/badge.svg)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
 
 
