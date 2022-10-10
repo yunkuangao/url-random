@@ -321,22 +321,24 @@
                 <!-- 内容 -->
                 <StructuredListBody>
                     <!-- 数据项 -->
-                    {#each urls as item}
-                        <StructuredListRow>
-                            <StructuredListCell>
-                                {item}
-                            </StructuredListCell>
-                            <StructuredListCell size="small">
-                                <Button
-                                    kind="danger"
-                                    size="small"
-                                    on:click={() => handleUrlDelete(item)}
-                                >
-                                    删除
-                                </Button>
-                            </StructuredListCell>
-                        </StructuredListRow>
-                    {/each}
+                    {#if urls != null && urls.length > 0}
+                        {#each urls as item}
+                            <StructuredListRow>
+                                <StructuredListCell>
+                                    {item}
+                                </StructuredListCell>
+                                <StructuredListCell size="small">
+                                    <Button
+                                        kind="danger"
+                                        size="small"
+                                        on:click={() => handleUrlDelete(item)}
+                                    >
+                                        删除
+                                    </Button>
+                                </StructuredListCell>
+                            </StructuredListRow>
+                        {/each}
+                    {/if}
                 </StructuredListBody>
             </StructuredList>
         </div>
