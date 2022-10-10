@@ -9,7 +9,6 @@ import io.ktor.server.routing.*
 import kotlinx.serialization.Serializable
 import me.yunkuangao.random.persistence.*
 import me.yunkuangao.random.utils.urlValid
-import java.io.File
 
 @Serializable
 data class Url(val url: String = "", val category: String = "")
@@ -21,22 +20,9 @@ fun Application.configureRouting() {
 
     routing {
 
-        static("/") {
-            /*
-            todo 增加页面
-            包括一个分类列表
-            一个url列表
-            一个查询功能
-            在分类列表中增加链接复制按钮
-             */
-            staticRootFolder = File("frontend/public")
-            file("build/bundle.js")
-            file("build/bundle.css")
-            file("build/bundle.js.map")
-            file("global.css")
-            file("index.html")
-            file("favicon.png")
-            default("index.html")
+        singlePageApplication {
+            // 并非react,但用自定义路径不起作用
+            react("frontend/public")
         }
 
         get("/url/list/{category...}") {
