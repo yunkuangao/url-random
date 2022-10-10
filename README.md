@@ -1,4 +1,7 @@
 # 简介
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 本项目是为了将多个url进行合并后，通过一个url进行随机获取的目标而创建的。
 
@@ -63,3 +66,25 @@ gradlew :run
 默认地址为:[http://localhost:8080](http://localhost:8080)
 
 
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center"><a href="https://github.com/masklkdf"><img src="https://avatars.githubusercontent.com/u/51392537?v=4?s=100" width="100px;" alt="likeit"/><br /><sub><b>likeit</b></sub></a><br /><a href="https://github.com/yunkuangao/url-random/commits?author=masklkdf" title="Code">💻</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
