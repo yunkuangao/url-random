@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "masklkdf",
+      "name": "likeit",
+      "avatar_url": "https://avatars.githubusercontent.com/u/51392537?v=4",
+      "profile": "https://github.com/masklkdf",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "url-random",
+  "projectOwner": "yunkuangao"
+}
