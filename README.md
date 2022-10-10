@@ -1,3 +1,10 @@
+# url随机分发器
+
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+
+
 # 简介
 
 本项目是为了将多个url进行合并后，通过一个url进行随机获取的目标而创建的。
@@ -62,4 +69,15 @@ gradlew :run
 
 默认地址为:[http://localhost:8080](http://localhost:8080)
 
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
