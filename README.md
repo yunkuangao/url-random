@@ -3,8 +3,8 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-
 [![Star on GitHub](https://img.shields.io/github/stars/yunkuangao/url-random.svg?style=social)](https://github.com/yunkuangao/url-random/stargazers)
+![frontend build](https://github.com/yunkuangao/url-random/actions/workflows/frontend.yml/badge.svg)
 
 ## 简介
 
