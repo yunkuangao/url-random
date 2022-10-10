@@ -4,6 +4,8 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
+[![Star on GitHub](https://img.shields.io/github/stars/yunkuangao/url-random.svg?style=social)](https://github.com/yunkuangao/url-random/stargazers)
+
 ## 简介
 
 本项目是为了将多个url进行合并后，通过一个url进行随机获取的目标而创建的。
