@@ -4,8 +4,6 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-[![DepShield Badge](https://depshield.sonatype.org/badges/yunkuangao/url-random/depshield.svg)](https://depshield.github.io)
-
 ## 简介
 
 本项目是为了将多个url进行合并后，通过一个url进行随机获取的目标而创建的。
