@@ -1,0 +1,61 @@
+name: 错误报告
+description: 提交错误报告
+title: "[Bug]: "
+labels: ["bug", "triage"]
+assignees:
+  - yunkuangao
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢您花时间填写此错误报告!
+  - type: input
+    id: contact
+    attributes:
+      label: 联系方式
+      description: 如果我们需要更多信息，我们如何与您取得联系?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: 发生了什么?
+      description: 也告诉我们，您期望会发生什么?
+      placeholder: 告诉我们你看到了什么!
+      value: "发生了一个错误!"
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: 版本
+      description: 您正在运行我们的软件的哪个版本?
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: 您在哪些浏览器上看到问题?
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
+        - 非前端问题
+  - type: textarea
+    id: logs
+    attributes:
+      label: 相关日志输出
+      description: 请复制并粘贴任何相关的日志输出。这将自动格式化为代码，因此不需要反引号。
+      render: shell
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: 行为守则
+      description: 提交此问题，即表示您同意遵守我们的 [行为准则](https://github.com/yunkuangao/url-random/blob/master/CODE_OF_CONDUCT.md)
+      options:
+        - label: 我同意遵守该项目的行为准则
+          required: true
