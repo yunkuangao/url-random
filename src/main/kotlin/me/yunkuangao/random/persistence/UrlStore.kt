@@ -1,10 +1,17 @@
 package me.yunkuangao.random.persistence
 
-import me.yunkuangao.random.utils.*
+import me.yunkuangao.random.utils.CATEGORY_FILE
+import me.yunkuangao.random.utils.attachFile
+import me.yunkuangao.random.utils.readFile
+import me.yunkuangao.random.utils.removeLine
 
 var categoryUrlMap: MutableMap<String, MutableList<String>> = readFile(CATEGORY_FILE)
     .associateWith { readFile("$it.txt").toMutableList() }
     .toMutableMap()
+
+fun categoryExist(category: String): Boolean {
+    return categoryUrlMap.containsKey(category)
+}
 
 fun saveCategory(category: String) {
     if (!categoryUrlMap.containsKey(category)) {
@@ -18,6 +25,10 @@ fun deleteCategory(category: String) {
         categoryUrlMap.remove(category)
         removeLine(category, CATEGORY_FILE)
     }
+}
+
+fun urlExist(url: String, category: String): Boolean {
+    return categoryUrlMap[category]?.contains(url) ?: false
 }
 
 fun saveUrl(url: String, category: String) {

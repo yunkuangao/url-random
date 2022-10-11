@@ -36,7 +36,9 @@ fun Application.configureRouting() {
 
         post("/url/add") {
             val url = call.receive<Url>()
-            if (urlValid(url.url)) {
+            if (url.url.isEmpty() || !urlExist(url.url, url.category)) {
+                call.response.status(HttpStatusCode.BadRequest)
+            } else if (urlValid(url.url)) {
                 saveUrl(url.url, url.category)
                 call.response.status(HttpStatusCode.OK)
             } else {
@@ -56,8 +58,12 @@ fun Application.configureRouting() {
 
         post("/category/add") {
             val url = call.receive<Url>()
-            saveCategory(url.category)
-            call.response.status(HttpStatusCode.OK)
+            if (url.category.isEmpty() || !categoryExist(url.category)) {
+                call.response.status(HttpStatusCode.BadRequest)
+            } else {
+                saveCategory(url.category)
+                call.response.status(HttpStatusCode.OK)
+            }
         }
 
         post("/category/delete") {
