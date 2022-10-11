@@ -18,6 +18,44 @@ JDK17及以上版本
 
 ## 运行
 
+### JDK17安装
+
+MacOS:
+```shell
+brew cask install homebrew/cask-versions/zulu17
+```
+Windows:
+```Shell
+# scoop 方式
+scoop install zulu17-jdk
+# winget 方式
+winget install Azul.Zulu.17.JDK
+```
+
+Linux:
+```shell
+# sdkman
+sdk install java 17.36.19-zulu
+# debian/ubuntu 
+apt install zulu17-jdk
+```
+
+### 开启服务
+
+Windows:
+```shell
+# cmd下进入解压缩后的目录:
+./url-random.bat
+```
+
+MacOS/Linux:
+```shell
+# shell下进入解压缩后的目录:
+./url-random
+```
+
+访问[http://localhost:8080](http://localhost:8080)
+
 ## 开发
 
 需要Gradle和JDK17
