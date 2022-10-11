@@ -1,0 +1,48 @@
+name: 功能请求
+description: 为这个项目提出一个想法
+title: ""
+labels: 
+assignees:
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感情您提供的宝贵建议!
+  - type: input
+    id: feature-describe
+    attributes:
+      label: 功能描述
+      description: 一句话概括您的请求
+      placeholder: 我需要...功能
+    validations:
+      required: true
+  - type: textarea
+    id: expect-target
+    attributes:
+      label: 期望能达到什么目标?
+      description: 使用文字或者图示来描述
+      placeholder: 希望能让...实现.
+    validations:
+      required: true
+  - type: textarea
+    id: try-something
+    attributes:
+      label: 您为此所做的努力?
+      description: 使用文字或者图示来描述
+      placeholder: 我实现了...
+    validations:
+      required: false
+  - type: textarea
+    id: other-content
+    attributes:
+      label: 附加内容
+    validations:
+      required: false
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: 行为守则
+      description: 提交此问题，即表示您同意遵守我们的 [行为准则](https://github.com/yunkuangao/url-random/blob/master/CODE_OF_CONDUCT.md)
+      options:
+        - label: 我同意遵守该项目的行为准则
+          required: true
