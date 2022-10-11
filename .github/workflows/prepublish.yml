@@ -11,7 +11,8 @@ on:
       - 'gradle.properties'
       - 'settings.gradle.kts'
       - 'frontend/**'
-
+permissions:
+  contents: write
 jobs:
   pre-release:
     name: "Pre Release"
