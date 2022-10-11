@@ -10,7 +10,7 @@
             title=""
             caption=""
             subtitle={n.content}
-            timeout="7000"
+            timeout="4000"
         />
     {/each}
 </div>
