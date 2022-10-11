@@ -10,6 +10,11 @@ name: backend build
 on:
   push:
     branches: [ "master" ]
+    paths:
+      - 'src/**'
+      - 'build.gradle.kts'
+      - 'gradle.properties'
+      - 'settings.gradle.kts'
 
 permissions:
   contents: read
