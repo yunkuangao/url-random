@@ -5,6 +5,12 @@ on:
   push:
     branches:
       - "master"
+    paths:
+      - 'src/**'
+      - 'build.gradle.kts'
+      - 'gradle.properties'
+      - 'settings.gradle.kts'
+      - 'frontend/**'
 
 jobs:
   pre-release:
