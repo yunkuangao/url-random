@@ -1,8 +1,5 @@
 name: 功能请求
 description: 为这个项目提出一个想法
-title: ""
-labels: 
-assignees:
 body:
   - type: markdown
     attributes:
