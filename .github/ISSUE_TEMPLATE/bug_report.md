@@ -1,9 +1,9 @@
 ---
-Name: Bug报告
-About: 创建报告以帮助我们改进
-Title: ''
-Labels: ''
-Assignees: ''
+name: Bug报告
+about: 创建报告以帮助我们改进
+title: ''
+labels: ''
+assignees: ''
 
 ---
 
