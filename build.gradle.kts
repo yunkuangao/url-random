@@ -65,7 +65,6 @@ tasks.npmInstall {
 val buildTaskUsingNpm = tasks.register<NpmTask>("buildNpm") {
     dependsOn(tasks.npmInstall)
     npmCommand.set(listOf("run", "build"))
-//    args.set(listOf("--", "--out-dir", "${buildDir}/npm-output"))
     inputs.dir("src")
     outputs.dir("${buildDir}/npm-output")
     outputs.upToDateWhen { false }
