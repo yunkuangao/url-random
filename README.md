@@ -4,7 +4,6 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-) 
 [![Star on GitHub](https://img.shields.io/github/stars/yunkuangao/url-random.svg?style=social)](https://github.com/yunkuangao/url-random/stargazers)
 ![build and test](https://github.com/yunkuangao/url-random/actions/workflows/buildandtest.yml/badge.svg)
-![preview](https://github.com/yunkuangao/url-random/actions/workflows/prepublish.yml/badge.svg)
 ![tag](https://github.com/yunkuangao/url-random/actions/workflows/tagpublish.yml/badge.svg)
 ![docker](https://github.com/yunkuangao/url-random/actions/workflows/publish-docker.yml/badge.svg)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
