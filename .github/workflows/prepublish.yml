@@ -40,8 +40,13 @@ jobs:
           title: "Development Build"
           files: |
             **/*.zip
-      - name: Publish to Docker Hub
-        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
-        with:
-          arguments: publishImage
             
+  publish-dockerhub:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Build Image
+      run: docker build -t yunkuangao/url-random:pre-latest .
+    - name: Login to Registry
+      run: docker login --username=${{ secrets.DOCKER_HUB_USERNAME }} --password ${{ secrets.DOCKER_HUB_PASSWORD }}
+    - name: Push Image
+      run: docker push yunkuangao/url-random:pre-latest
