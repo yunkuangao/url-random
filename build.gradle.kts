@@ -81,3 +81,28 @@ distributions {
         }
     }
 }
+
+ktor {
+    docker {
+        localImageName.set("url-random")
+        imageTag.set(System.getenv("PUBLISH_TAG"))
+        jreVersion.set(io.ktor.plugin.features.JreVersion.JRE_17)
+        externalRegistry.set(
+            io.ktor.plugin.features.DockerImageRegistry.dockerHub(
+                appName = provider { "url-random" },
+                username = providers.environmentVariable("DOCKER_HUB_USERNAME"),
+                password = providers.environmentVariable("DOCKER_HUB_PASSWORD")
+            )
+        )
+//        portMappings.set(
+//            listOf(
+//                io.ktor.plugin.features.DockerPortMapping(
+//                    80,
+//                    8080,
+//                    io.ktor.plugin.features.DockerPortMappingProtocol.TCP
+//                )
+//            )
+//        )
+
+    }
+}
