@@ -87,7 +87,6 @@ ktor {
         localImageName.set("url-random")
         imageTag.set(System.getenv("GITHUB_REF"))
         jreVersion.set(io.ktor.plugin.features.JreVersion.JRE_17)
-        jib.to.image = "jib-image.tar"
         externalRegistry.set(
             io.ktor.plugin.features.DockerImageRegistry.dockerHub(
                 appName = provider { "url-random" },
