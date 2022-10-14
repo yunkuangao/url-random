@@ -70,6 +70,7 @@ val buildTaskUsingNpm = tasks.register<NpmTask>("buildNpm") {
     outputs.upToDateWhen { false }
 }
 
+tasks.getByName("buildFatJar").dependsOn(buildTaskUsingNpm)
 tasks.getByName("distZip").dependsOn(buildTaskUsingNpm)
 
 distributions {
