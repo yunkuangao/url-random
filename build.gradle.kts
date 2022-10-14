@@ -85,7 +85,7 @@ distributions {
 ktor {
     docker {
         localImageName.set("url-random")
-        imageTag.set(System.getenv("PUBLISH_TAG"))
+        imageTag.set(System.getenv("GITHUB_REF"))
         jreVersion.set(io.ktor.plugin.features.JreVersion.JRE_17)
         externalRegistry.set(
             io.ktor.plugin.features.DockerImageRegistry.dockerHub(
