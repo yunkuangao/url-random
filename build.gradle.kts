@@ -23,17 +23,6 @@ application {
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
 }
 
-node {
-    version.set("16.15.0")
-    npmVersion.set("8.10.0")
-    npmInstallCommand.set("install")
-    distBaseUrl.set("https://nodejs.org/dist")
-    download.set(true)
-    workDir.set(file("${project.projectDir}/.cache/nodejs"))
-    npmWorkDir.set(file("${project.projectDir}/.cache/npm"))
-    nodeProjectDir.set(file("${project.projectDir}/frontend"))
-}
-
 repositories {
     mavenCentral()
 }
@@ -56,6 +45,17 @@ tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
 }
 
+node {
+    version.set("16.15.0")
+    npmVersion.set("8.10.0")
+    npmInstallCommand.set("install")
+    distBaseUrl.set("https://nodejs.org/dist")
+    download.set(true)
+    workDir.set(file("${project.projectDir}/.cache/nodejs"))
+    npmWorkDir.set(file("${project.projectDir}/.cache/npm"))
+    nodeProjectDir.set(file("${project.projectDir}/frontend"))
+}
+
 tasks.npmInstall {
     nodeModulesOutputFilter {
         exclude("notExistingFile")
@@ -65,21 +65,14 @@ tasks.npmInstall {
 val buildTaskUsingNpm = tasks.register<NpmTask>("buildNpm") {
     dependsOn(tasks.npmInstall)
     npmCommand.set(listOf("run", "build"))
-    inputs.dir("src")
-    outputs.dir("${buildDir}/npm-output")
-    outputs.upToDateWhen { false }
+    inputs.dir("${project.projectDir}/frontend")
+    outputs.dir("${buildDir}/resources/main/static/build")
+    copy {
+        from("${project.projectDir}/frontend/public")
+        into("${buildDir}/resources/main/static")
+    }
 }
 
 tasks.getByName("buildFatJar").dependsOn(buildTaskUsingNpm)
 tasks.getByName("distZip").dependsOn(buildTaskUsingNpm)
-
-distributions {
-    main {
-        contents {
-            from("frontend/public") {
-                into("frontend/public")
-            }
-        }
-    }
-}
 

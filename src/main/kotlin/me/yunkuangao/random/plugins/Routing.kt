@@ -20,9 +20,14 @@ fun Application.configureRouting() {
 
     routing {
 
-        singlePageApplication {
-            // 并非react,但用自定义路径不起作用
-            react("frontend/public")
+//        singlePageApplication {
+//            // 并非react,但用自定义路径不起作用
+//            react("frontend/public")
+//        }
+
+        static("/") {
+            staticBasePackage = "static"
+            resources(".")
         }
 
         get("/url/list/{category...}") {
