@@ -7,6 +7,5 @@ RUN gradle buildFatJar --no-daemon
 FROM openjdk:17
 EXPOSE 8080:8080
 RUN mkdir /app
-COPY --from=build /home/gradle/frontend/public/* /app/*
 COPY --from=build /home/gradle/src/build/libs/url-random-all.jar /app/url-random.jar
 ENTRYPOINT ["java","-jar","/app/url-random.jar"]
