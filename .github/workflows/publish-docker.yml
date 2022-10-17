@@ -21,11 +21,16 @@ jobs:
       - name: make gradlew executable
         run: chmod +x ./gradlew
 
+      - name: Set VERSION variable from tag
+        run: |
+          TAG=${{ github.event.release.tag_name }}
+          echo "VERSION=${TAG#v}" >> $GITHUB_ENV
+
       - name: Build with Gradle
         env:
           DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
           DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
-          VERSION: ${VERSION:1}
+          VERSION: ${{ VERSION }}
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
           arguments: publishImage
