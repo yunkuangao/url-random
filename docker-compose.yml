@@ -4,10 +4,8 @@ services:
   url-random:
     container_name: url-random
     restart: unless-stopped
-    build: .
+    image: yunkuangao/url-random
     ports:
       - "80:8080"
     environment:
       TZ: Asia/Shanghai
-    volumes:
-      - $PWD/data:/app
