@@ -99,7 +99,7 @@ ktor {
     docker {
         jreVersion.set(io.ktor.plugin.features.JreVersion.JRE_17)
         localImageName.set("url-random")
-        imageTag.set(System.getenv("GITHUB_REF_NAME"))
+        imageTag.set(System.getenv("VERSION"))
         portMappings.set(
             listOf(
                 io.ktor.plugin.features.DockerPortMapping(
