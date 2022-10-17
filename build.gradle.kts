@@ -112,8 +112,8 @@ ktor {
         externalRegistry.set(
             io.ktor.plugin.features.DockerImageRegistry.dockerHub(
                 appName = provider { "url-random" },
-                username = providers.environmentVariable("secrets.DOCKER_HUB_USERNAME"),
-                password = providers.environmentVariable("secrets.DOCKER_HUB_PASSWORD"),
+                username = providers.environmentVariable("DOCKER_HUB_USERNAME"),
+                password = providers.environmentVariable("DOCKER_HUB_PASSWORD"),
             )
         )
     }
