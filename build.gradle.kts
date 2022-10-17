@@ -1,8 +1,8 @@
 import com.github.gradle.node.npm.task.NpmTask
 
-val ktor_version: String by project
-val kotlin_version: String by project
-val logback_version: String by project
+val ktorVersion: String by project
+val kotlinVersion: String by project
+val logbackVersion: String by project
 
 plugins {
     application
@@ -15,7 +15,7 @@ plugins {
 group = "me.yunkuangao.random"
 version = "0.0.1"
 application {
-    mainClass.set("me.yunkuangao.random.ApplicationKt")
+    mainClass.set("io.ktor.server.netty.EngineMain")
 
     executableDir = ""
 
@@ -28,17 +28,17 @@ repositories {
 }
 
 dependencies {
-    implementation("ch.qos.logback:logback-classic:$logback_version")
-    implementation("io.ktor:ktor-server-core:$ktor_version")
-    implementation("io.ktor:ktor-server-core-jvm:$ktor_version")
-    implementation("io.ktor:ktor-server-cors:$ktor_version")
-    implementation("io.ktor:ktor-server-content-negotiation:$ktor_version")
-    implementation("io.ktor:ktor-server-netty-jvm:$ktor_version")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
+    implementation("ch.qos.logback:logback-classic:$logbackVersion")
+    implementation("io.ktor:ktor-server-core:$ktorVersion")
+    implementation("io.ktor:ktor-server-core-jvm:$ktorVersion")
+    implementation("io.ktor:ktor-server-cors:$ktorVersion")
+    implementation("io.ktor:ktor-server-content-negotiation:$ktorVersion")
+    implementation("io.ktor:ktor-server-netty-jvm:$ktorVersion")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.8.0")
 
-    testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+    testImplementation("io.ktor:ktor-server-tests-jvm:$ktorVersion")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
 }
 
 tasks.withType<JavaCompile> {
@@ -65,14 +65,32 @@ tasks.npmInstall {
 val buildTaskUsingNpm = tasks.register<NpmTask>("buildNpm") {
     dependsOn(tasks.npmInstall)
     npmCommand.set(listOf("run", "build"))
-    inputs.dir("${project.projectDir}/frontend")
-    outputs.dir("${buildDir}/resources/main/static/build")
+    inputs.files(
+        "${project.projectDir}/frontend/.env",
+        "${project.projectDir}/frontend/.prettierrc.js",
+        "${project.projectDir}/frontend/rollup.config.js",
+        "${project.projectDir}/frontend/package.json",
+        "${project.projectDir}/frontend/package-locak.json",
+        "${project.projectDir}/frontend/public/global.css",
+        "${project.projectDir}/frontend/public/index.html",
+        "${project.projectDir}/frontend/public/favicon.png",
+    )
+    inputs.dir("${project.projectDir}/frontend/scripts")
+    inputs.dir("${project.projectDir}/frontend/src")
+    outputs.dir("${project.projectDir}/frontend/build")
     copy {
         from("${project.projectDir}/frontend/public")
         into("${buildDir}/resources/main/static")
     }
 }
 
-tasks.getByName("buildFatJar").dependsOn(buildTaskUsingNpm)
-tasks.getByName("distZip").dependsOn(buildTaskUsingNpm)
+tasks.getByName("jar").dependsOn(buildTaskUsingNpm)
+tasks.getByName("shadowJar").dependsOn(buildTaskUsingNpm)
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+        vendor.set(JvmVendorSpec.AZUL)
+//        vendor.set(JvmVendorSpec.matching("zulu"))
+    }
+}
