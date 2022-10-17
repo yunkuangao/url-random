@@ -70,7 +70,7 @@ val buildTaskUsingNpm = tasks.register<NpmTask>("buildNpm") {
         "${project.projectDir}/frontend/.prettierrc.js",
         "${project.projectDir}/frontend/rollup.config.js",
         "${project.projectDir}/frontend/package.json",
-        "${project.projectDir}/frontend/package-locak.json",
+        "${project.projectDir}/frontend/package-lock.json",
         "${project.projectDir}/frontend/public/global.css",
         "${project.projectDir}/frontend/public/index.html",
         "${project.projectDir}/frontend/public/favicon.png",
@@ -90,7 +90,7 @@ tasks.getByName("shadowJar").dependsOn(buildTaskUsingNpm)
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
-        vendor.set(JvmVendorSpec.AZUL)
+//        vendor.set(JvmVendorSpec.AZUL)
 //        vendor.set(JvmVendorSpec.matching("zulu"))
     }
 }
