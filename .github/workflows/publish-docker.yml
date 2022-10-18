@@ -21,11 +21,6 @@ jobs:
       - name: make gradlew executable
         run: chmod +x ./gradlew
 
-      - name: Set VERSION variable from tag
-        run: |
-          TAG=${{ env.GITHUB_REF }}
-          echo "VERSION=${TAG#refs/heads/v}" >> $GITHUB_ENV
-
       - name: Build with Gradle
         env:
           DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
