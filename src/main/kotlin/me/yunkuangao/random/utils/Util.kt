@@ -10,8 +10,13 @@ import java.util.stream.Collectors
 
 const val CATEGORY_FILE = "category.txt"
 
-fun fileExist(urlFile: String) {
-    val file = File(urlFile)
+var DATA_DIR = "data"
+
+fun fileExist(urlFile: String, directory: String = DATA_DIR) {
+    val dir = File(directory)
+    if (!dir.exists()) dir.mkdirs()
+
+    val file = File(DATA_DIR + File.separator + urlFile)
     if (!file.exists()) {
         file.createNewFile()
     }
@@ -19,16 +24,16 @@ fun fileExist(urlFile: String) {
 
 fun readFile(urlFile: String): List<String> {
     fileExist(urlFile)
-    return File(urlFile).readLines()
+    return File(DATA_DIR + File.separator + urlFile).readLines()
 }
 
 fun attachFile(text: String, file: String) {
     fileExist(file)
-    File(file).appendText(text + "\n")
+    File(DATA_DIR + File.separator + file).appendText(text + "\n")
 }
 
 fun removeLine(lineContent: String, filename: String) {
-    val file = File(filename)
+    val file = File(DATA_DIR + File.separator + filename)
     val out: List<String> = Files.lines(file.toPath())
         .filter { line -> !line.contains(lineContent) }
         .collect(Collectors.toList())
