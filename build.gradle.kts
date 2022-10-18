@@ -94,27 +94,3 @@ java {
 //        vendor.set(JvmVendorSpec.matching("zulu"))
     }
 }
-
-ktor {
-    docker {
-        jreVersion.set(io.ktor.plugin.features.JreVersion.JRE_17)
-        localImageName.set("url-random")
-        imageTag.set(System.getenv("GITHUB_REF_NAME")?.removePrefix("v"))
-        portMappings.set(
-            listOf(
-                io.ktor.plugin.features.DockerPortMapping(
-                    8080,
-                    8080,
-                    io.ktor.plugin.features.DockerPortMappingProtocol.TCP
-                )
-            )
-        )
-        externalRegistry.set(
-            io.ktor.plugin.features.DockerImageRegistry.dockerHub(
-                appName = provider { "url-random" },
-                username = providers.environmentVariable("DOCKER_HUB_USERNAME"),
-                password = providers.environmentVariable("DOCKER_HUB_PASSWORD"),
-            )
-        )
-    }
-}
