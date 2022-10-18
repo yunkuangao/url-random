@@ -23,7 +23,7 @@ jobs:
 
       - name: Set VERSION variable from tag
         run: |
-          TAG=${{ github.event.release.tag_name }}
+          TAG=${{ GITHUB_REF_NAME }}
           echo "VERSION=${TAG#v}" >> $GITHUB_ENV
 
       - name: Build with Gradle
