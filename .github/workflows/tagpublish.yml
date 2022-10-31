@@ -35,4 +35,4 @@ jobs:
           prerelease: false
           files: |
             **/*.zip
-            
+            **/*.jar
