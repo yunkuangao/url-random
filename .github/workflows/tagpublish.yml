@@ -34,5 +34,5 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           files: |
-            **/*.zip
-            **/*.jar
+            **/url-random-shadow.zip
+            **/url-random-all.jar

@@ -80,7 +80,7 @@ val buildTaskUsingNpm = tasks.register<NpmTask>("buildNpm") {
     outputs.dir("${project.projectDir}/frontend/build")
     copy {
         from("${project.projectDir}/frontend/public")
-        into("${buildDir}/resources/main/static")
+        into("${project.projectDir}/build/resources/main/static")
     }
 }
 
@@ -90,7 +90,13 @@ tasks.getByName("shadowJar").dependsOn(buildTaskUsingNpm)
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
-//        vendor.set(JvmVendorSpec.AZUL)
-//        vendor.set(JvmVendorSpec.matching("zulu"))
     }
 }
+
+tasks.getByName<Zip>("distZip").archiveFileName.set("${project.name}.zip")
+tasks.getByName<Tar>("distTar").archiveFileName.set("${project.name}.tar")
+tasks.getByName<Zip>("shadowDistZip").archiveFileName.set("${project.name}-shadow.zip")
+tasks.getByName<Tar>("shadowDistTar").archiveFileName.set("${project.name}-shadow.tar")
+
+tasks.getByName<Jar>("jar").archiveFileName.set("${project.name}.jar")
+tasks.getByName<Jar>("shadowJar").archiveFileName.set("${project.name}-all.jar")
