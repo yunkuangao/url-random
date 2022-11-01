@@ -1,8 +1,8 @@
 FROM ubuntu AS download
-ARG version
-RUN echo $version
+ARG github_version
+RUN echo $github_version
 RUN mkdir /app
-ADD https://github.com/yunkuangao/url-random/releases/download/$version/url-random-all.jar /app/
+ADD https://github.com/yunkuangao/url-random/releases/download/$github_version/url-random-all.jar /app/
 
 FROM amazoncorretto:17
 RUN mkdir /app

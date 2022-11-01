@@ -87,4 +87,4 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            version=${{ github.action_ref }}
+            github_version=$GITHUB_REF_NAME
