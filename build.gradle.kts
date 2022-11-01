@@ -51,9 +51,9 @@ node {
     npmInstallCommand.set("install")
     distBaseUrl.set("https://nodejs.org/dist")
     download.set(true)
-    workDir.set(file("${project.projectDir}/.cache/nodejs"))
-    npmWorkDir.set(file("${project.projectDir}/.cache/npm"))
-    nodeProjectDir.set(file("${project.projectDir}/frontend"))
+    workDir.set(file(".cache/nodejs"))
+    npmWorkDir.set(file(".cache/npm"))
+    nodeProjectDir.set(file("frontend"))
 }
 
 tasks.npmInstall {
@@ -66,21 +66,21 @@ val buildTaskUsingNpm = tasks.register<NpmTask>("buildNpm") {
     dependsOn(tasks.npmInstall)
     npmCommand.set(listOf("run", "build"))
     inputs.files(
-        "${project.projectDir}/frontend/.env",
-        "${project.projectDir}/frontend/.prettierrc.js",
-        "${project.projectDir}/frontend/rollup.config.js",
-        "${project.projectDir}/frontend/package.json",
-        "${project.projectDir}/frontend/package-lock.json",
-        "${project.projectDir}/frontend/public/global.css",
-        "${project.projectDir}/frontend/public/index.html",
-        "${project.projectDir}/frontend/public/favicon.png",
+        "frontend/.env",
+        "frontend/.prettierrc.js",
+        "frontend/rollup.config.js",
+        "frontend/package.json",
+        "frontend/package-lock.json",
+        "frontend/public/global.css",
+        "frontend/public/index.html",
+        "frontend/public/favicon.png",
     )
-    inputs.dir("${project.projectDir}/frontend/scripts")
-    inputs.dir("${project.projectDir}/frontend/src")
-    outputs.dir("${project.projectDir}/frontend/build")
+    inputs.dir("frontend/scripts")
+    inputs.dir("frontend/src")
+    outputs.dir("frontend/public/build")
     copy {
-        from("${project.projectDir}/frontend/public")
-        into("${project.projectDir}/build/resources/main/static")
+        from("frontend/public")
+        into("build/resources/main/static")
     }
 }
 
