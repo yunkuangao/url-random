@@ -29,8 +29,11 @@ jobs:
 
       - name: ls frontend
         run: ls ./frontend/public
-
+      - name: ls frontend build
+        run: ls ./frontend/public/build
       - name: ls build resources
+        run: ls ./build/resources/main
+      - name: ls build resources static
         run: ls ./build/resources/main/static
 
       - uses: "marvinpinto/action-automatic-releases@latest"

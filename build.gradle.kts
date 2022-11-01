@@ -78,14 +78,22 @@ val buildTaskUsingNpm = tasks.register<NpmTask>("buildNpm") {
     inputs.dir("frontend/scripts")
     inputs.dir("frontend/src")
     outputs.dir("frontend/public/build")
-    copy {
-        from("frontend/public")
-        into("build/resources/main/static")
-    }
 }
 
-tasks.getByName("jar").dependsOn(buildTaskUsingNpm)
-tasks.getByName("shadowJar").dependsOn(buildTaskUsingNpm)
+tasks.clean {
+    delete += listOf(
+        "frontend/public/build"
+    )
+}
+
+val frontendCopy = tasks.register<Copy>("frontendCopy") {
+    dependsOn(buildTaskUsingNpm)
+    from("frontend/public")
+    into("build/resources/main/static")
+}
+
+tasks.getByName("jar").dependsOn(frontendCopy)
+tasks.getByName("shadowJar").dependsOn(frontendCopy)
 
 java {
     toolchain {
