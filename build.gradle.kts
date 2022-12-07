@@ -8,7 +8,7 @@ plugins {
     application
     kotlin("jvm") version "1.7.22"
     id("io.ktor.plugin") version "2.1.3"
-    kotlin("plugin.serialization") version "1.7.21"
+    kotlin("plugin.serialization") version "1.7.22"
     id("com.github.node-gradle.node") version "3.5.0"
 }
 
