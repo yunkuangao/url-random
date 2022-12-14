@@ -10,7 +10,7 @@ plugins {
     id("io.ktor.plugin") version "2.2.1"
     kotlin("plugin.serialization") version "1.7.22"
     id("com.github.node-gradle.node") version "3.5.0"
-    id "org.sonarqube" version "3.4.0.2513"
+    id("org.sonarqube") version "3.4.0.2513"
 }
 
 group = "me.yunkuangao.random"
