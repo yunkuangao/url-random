@@ -111,8 +111,8 @@ tasks.getByName<Jar>("jar").archiveFileName.set("${project.name}.jar")
 tasks.getByName<Jar>("shadowJar").archiveFileName.set("${project.name}-all.jar")
 
 sonarqube {
-  properties {
-    property "sonar.projectKey", "yun-org_url-random_AYUPpSS-upODPxvAYNjM"
-    property "sonar.qualitygate.wait", true 
-  }
+    properties {
+        property("sonar.projectKey", "yun-org_url-random_AYUPpSS-upODPxvAYNjM")
+        property("sonar.qualitygate.wait", true)
+    }
 }
