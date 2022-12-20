@@ -4,8 +4,9 @@
       when: always
 
 stages:
-  - build
   - test
+  - build
+  - doc
   - publish
 
 variables:
@@ -15,6 +16,19 @@ variables:
 before_script:
   - GRADLE_USER_HOME="$(pwd)/.gradle"
   - export GRADLE_USER_HOME
+
+test:
+  image: azul/zulu-openjdk:17-latest
+  stage: test
+  script: 
+    - chmod +x ./gradlew
+    - ./gradlew check
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: pull
+    paths:
+      - build
+      - .gradle
 
 build:
   image: azul/zulu-openjdk:17-latest
@@ -29,15 +43,15 @@ build:
       - build
       - .gradle
 
-test:
+doc:
   image: azul/zulu-openjdk:17-latest
-  stage: test
+  stage: doc
   script: 
     - chmod +x ./gradlew
-    - ./gradlew check
+    - ./gradlew dokkaHtml
   cache:
     key: "$CI_COMMIT_REF_NAME"
-    policy: pull
+    policy: push
     paths:
       - build
       - .gradle
