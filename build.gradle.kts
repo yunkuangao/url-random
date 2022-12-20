@@ -6,11 +6,11 @@ val logbackVersion: String by project
 
 plugins {
     application
-    kotlin("jvm") version "1.7.22"
-    id("io.ktor.plugin") version "2.2.1"
-    kotlin("plugin.serialization") version "1.7.22"
+    kotlin("jvm") version "1.7.20"
+    id("io.ktor.plugin") version "2.1.3"
+    kotlin("plugin.serialization") version "1.7.20"
     id("com.github.node-gradle.node") version "3.5.0"
-    id("org.sonarqube") version "3.4.0.2513"
+    id("org.jetbrains.dokka") version "1.7.20"
 }
 
 group = "me.yunkuangao.random"
@@ -109,10 +109,3 @@ tasks.getByName<Tar>("shadowDistTar").archiveFileName.set("${project.name}-shado
 
 tasks.getByName<Jar>("jar").archiveFileName.set("${project.name}.jar")
 tasks.getByName<Jar>("shadowJar").archiveFileName.set("${project.name}-all.jar")
-
-sonarqube {
-    properties {
-        property("sonar.projectKey", "yun-org_url-random_AYUPpSS-upODPxvAYNjM")
-        property("sonar.qualitygate.wait", true)
-    }
-}
