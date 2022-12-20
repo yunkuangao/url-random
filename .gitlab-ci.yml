@@ -17,6 +17,7 @@ before_script:
   - export GRADLE_USER_HOME
 
 build:
+  image: azul/zulu-openjdk:17-latest
   stage: build
   script: 
     - chmod +x ./gradlew
@@ -29,6 +30,7 @@ build:
       - .gradle
 
 test:
+  image: azul/zulu-openjdk:17-latest
   stage: test
   script: 
     - chmod +x ./gradlew
