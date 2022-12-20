@@ -10,11 +10,18 @@ stages:
   - upload
   - release
 
+cache:
+  paths:
+    - .gradle/wrapper
+    - .gradle/caches
+
 variables:
   TAG_LATEST: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME:latest
   TAG_COMMIT: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME:$CI_COMMIT_SHORT_SHA
   RELEASE_JAR: url-random-all.jar
   RELEASE_ZIP: url-random-shadow.zip
+  MAVEN_REPO: /cache/.m2
+  GRADLE_USER_HOME: /cache/.gradle
 
 before_script:
   - GRADLE_USER_HOME="$(pwd)/.gradle"
