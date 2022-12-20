@@ -64,8 +64,8 @@ upload:
   image: curlimages/curl:latest
   <<: *rules-publish
   script:
-    - curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file build/distributions/${RELEASE_ZIP} ${PACKAGE_REGISTRY_URL}/${RELEASE_ZIP}
-    - curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file build/libs/${RELEASE_JAR} ${PACKAGE_REGISTRY_URL}/${RELEASE_JAR}
+    - 'curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file build/distributions/${RELEASE_ZIP} ${PACKAGE_REGISTRY_URL}/${RELEASE_ZIP}'
+    - 'curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file build/libs/${RELEASE_JAR} ${PACKAGE_REGISTRY_URL}/${RELEASE_JAR}'
 
 release_gitlab:
   stage: release
