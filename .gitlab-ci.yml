@@ -29,6 +29,7 @@ test:
     paths:
       - build
       - .gradle
+      - .cache
 
 build:
   image: azul/zulu-openjdk:17-latest
@@ -42,6 +43,7 @@ build:
     paths:
       - build
       - .gradle
+      - .cache
 
 doc:
   image: azul/zulu-openjdk:17-latest
@@ -55,6 +57,7 @@ doc:
     paths:
       - build
       - .gradle
+      - .cache
 
 publish:
   image: docker:latest
