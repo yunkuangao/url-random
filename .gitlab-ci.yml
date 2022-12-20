@@ -12,8 +12,9 @@ stages:
 
 cache:
   paths:
-    - .gradle/wrapper
-    - .gradle/caches
+    - build
+    - .gradle
+    - .cache
 
 variables:
   TAG_LATEST: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME:latest
@@ -33,12 +34,6 @@ test:
   script: 
     - chmod +x ./gradlew
     - ./gradlew check
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    paths:
-      - build
-      - .gradle
-      - .cache
 
 build:
   image: azul/zulu-openjdk:17-latest
@@ -46,12 +41,6 @@ build:
   script: 
     - chmod +x ./gradlew
     - ./gradlew build
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    paths:
-      - build
-      - .gradle
-      - .cache
 
 doc:
   image: azul/zulu-openjdk:17-latest
@@ -59,12 +48,6 @@ doc:
   script: 
     - chmod +x ./gradlew
     - ./gradlew dokkaHtml
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    paths:
-      - build
-      - .gradle
-      - .cache
 
 upload:
   stage: upload
@@ -84,12 +67,6 @@ release_gitlab:
     name: '$CI_COMMIT_TAG'
     tag_name: '$CI_COMMIT_TAG'
     description: '$CI_COMMIT_TAG'
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    paths:
-      - build
-      - .gradle
-      - .cache
 
 release_docker:
   image: docker:latest
