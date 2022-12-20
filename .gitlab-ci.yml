@@ -3,8 +3,6 @@
     - if: '$CI_COMMIT_TAG && $CI_COMMIT_TAG =~ /^v1\.0\.0(-rc.+)?$/'
       when: always
 
-image: gradle:alpine
-
 stages:
   - build
   - test
@@ -20,7 +18,9 @@ before_script:
 
 build:
   stage: build
-  script: gradle build
+  script: 
+    - chmod +x ./gradlew
+    - ./gradlew build
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
@@ -30,7 +30,9 @@ build:
 
 test:
   stage: test
-  script: gradle check
+  script: 
+    - chmod +x ./gradlew
+    - ./gradlew check
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
