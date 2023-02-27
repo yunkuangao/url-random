@@ -9,7 +9,7 @@ plugins {
     kotlin("jvm") version "1.8.10"
     id("io.ktor.plugin") version "2.1.3"
     kotlin("plugin.serialization") version "1.8.10"
-    id("com.github.node-gradle.node") version "3.5.0"
+    id("com.github.node-gradle.node") version "3.5.1"
     id("org.jetbrains.dokka") version "1.7.20"
 }
 
