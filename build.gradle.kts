@@ -10,7 +10,7 @@ plugins {
     id("io.ktor.plugin") version "2.2.4"
     kotlin("plugin.serialization") version "1.8.10"
     id("com.github.node-gradle.node") version "3.5.1"
-    id("org.jetbrains.dokka") version "1.7.20"
+    id("org.jetbrains.dokka") version "1.8.20"
 }
 
 group = "me.yunkuangao.random"
